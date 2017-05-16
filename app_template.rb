@@ -19,6 +19,10 @@ run 'rails db:create'
 
 application_helper_file = File.join(File.dirname(__FILE__), 'lib/application_helper.rb')
 run "cp #{application_helper_file} app/helpers/application_helper.rb"
+
+application_rb_file = File.join(File.dirname(__FILE__), 'lib/application.rb')
+run "cp #{application_rb_file} config/application.rb"
+
 run 'mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss'
 run "echo \"@import 'gritter';\" >> app/assets/stylesheets/application.scss"
 run "echo \"@import 'bootstrap';\" >> app/assets/stylesheets/application.scss"
@@ -41,6 +45,9 @@ run "cp #{application_layout_file} app/views/layouts/application.html.slim"
 
 run 'rails g controller Static home'
 
+homepage_file = File.join(File.dirname(__FILE__), 'lib/home.html.slim')
+run "cp #{homepage_file} app/views/static/home.html.slim"
+
 updated_route_file = File.join(File.dirname(__FILE__), 'lib/routes.rb')
 run "cp #{updated_route_file} config/routes.rb"
 
@@ -51,6 +58,8 @@ run 'erb2slim app/views -d'
 
 run 'rails db:migrate'
 
+generate 'petergate:install'
+run 'rails db:migrate'
 
 git :init
 run 'echo config/secrets.yml >> .gitignore'

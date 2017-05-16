@@ -10,12 +10,7 @@
 - It integrates font-awesome
 - Sets up a default homepage
 - Integrated Kaminari for pagination, with config and views
-
-TODO: Install and configure:
-
-- petergate
-- font awesome
-- Add new devcamp homepage, maybe something funny
+- Integrates Petergate for an  authorization engine
 
 
 ## Additionally, it will:
