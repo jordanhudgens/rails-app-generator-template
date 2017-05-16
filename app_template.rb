@@ -18,11 +18,6 @@ run 'bundle install'
 
 run 'rails db:create'
 
-application_helper_file = File.join(File.dirname(__FILE__), 'lib/application_helper.rb')
-run "cp #{application_helper_file} app/helpers/application_helper.rb"
-
-application_rb_file = File.join(File.dirname(__FILE__), 'lib/application.rb')
-run "cp #{application_rb_file} config/application.rb"
 
 run 'mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss'
 run "echo \"@import 'gritter';\" >> app/assets/stylesheets/application.scss"
@@ -40,23 +35,22 @@ generate 'kaminari:config'
 generate 'kaminari:views default'
 
 run 'erb2slim app/views -d'
-
-application_layout_file = File.join(File.dirname(__FILE__), 'lib/application.html.slim')
-run "cp #{application_layout_file} app/views/layouts/application.html.slim"
-
 run 'rails g controller Static home'
 
-homepage_file = File.join(File.dirname(__FILE__), 'lib/home.html.slim')
-run "cp #{homepage_file} app/views/static/home.html.slim"
+files = [
+  { 'lib/application.html.slim' => 'app/views/layouts/application.html.slim' },
+  { 'lib/application_helper.rb' => 'app/helpers/application_helper.rb'},
+  { 'lib/application.rb' => 'config/application.rb'},
+  { 'lib/home.html.slim' => 'app/views/static/home.html.slim'},
+  { 'lib/routes.rb' => 'config/routes.rb'},
+  { 'lib/images/logo.png' => 'app/assets/images/logo.png'},
+  { 'lib/rails_helper.rb' => 'spec/rails_helper.rb'},
+]
 
-updated_route_file = File.join(File.dirname(__FILE__), 'lib/routes.rb')
-run "cp #{updated_route_file} config/routes.rb"
-
-logo = File.join(File.dirname(__FILE__), 'lib/images/logo.png')
-run "cp #{logo} app/assets/images/logo.png"
-
-rails_spec_helper = File.join(File.dirname(__FILE__), 'lib/rails_helper.rb')
-run "cp #{rails_spec_helper} spec/rails_helper.rb"
+files.each do |f|
+  source_file = File.join(File.dirname(__FILE__), f.keys.first)
+  run "cp #{source_file} #{f.values.last}"
+end
 
 run 'erb2slim app/views -d'
 
