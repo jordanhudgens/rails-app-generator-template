@@ -43,4 +43,4 @@ git :init
 run 'echo config/secrets.yml >> .gitignore'
 git add: '--all', commit: '-m "Initial Commit"'
 
-
+run 'open http://localhost:3000 | rails s'
