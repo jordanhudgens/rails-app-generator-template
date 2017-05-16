@@ -14,16 +14,22 @@ gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'devcamp_view_tool', '~> 0.1.0'
 
 run 'bundle install'
+
 run 'rails db:create'
 
+application_helper_file = File.join(File.dirname(__FILE__), 'application_helper.rb')
+run "mv #{application_helper_file} app/helpers/application_helper.rb"
 run 'mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss'
+run "echo \"@import 'gritter';\" > app/assets/stylesheets/application.scss"
 run "echo \"@import 'bootstrap';\" > app/assets/stylesheets/application.scss"
+run "echo \"//= require gritter\" >> app/assets/javascripts/application.js"
 run "echo \"//= require bootstrap-sprockets\" >> app/assets/javascripts/application.js"
 
 generate 'rspec:install'
 generate 'devise:install'
 generate 'devise User'
 generate 'devise:views'
+generate 'gritter:locale'
 
 run 'erb2slim app/views -d'
 

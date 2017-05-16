@@ -1,4 +1,4 @@
-# Rails Template Generator
+# Rails App Generator Template
 
 > This application generator will pre-install and configure the following items:
 
