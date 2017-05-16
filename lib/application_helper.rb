@@ -22,10 +22,8 @@ module ApplicationHelper
     ]
   end
 
-  def nav_helper style, tag_type
-    nav_links = ''
-
-    nav_items.each do |item|
+  def nav_helper(tag_type, style = '')
+    nav_items.each_with_object('') do |item|
       nav_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}'>#{item[:title]}</a></#{tag_type}>"
     end
 

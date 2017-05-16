@@ -17,8 +17,8 @@ run 'bundle install'
 
 run 'rails db:create'
 
-application_helper_file = File.join(File.dirname(__FILE__), 'application_helper.rb')
-run "mv #{application_helper_file} app/helpers/application_helper.rb"
+application_helper_file = File.join(File.dirname(__FILE__), 'lib/application_helper.rb')
+run "cp #{application_helper_file} app/helpers/application_helper.rb"
 run 'mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss'
 run "echo \"@import 'gritter';\" > app/assets/stylesheets/application.scss"
 run "echo \"@import 'bootstrap';\" > app/assets/stylesheets/application.scss"
@@ -31,6 +31,10 @@ generate 'devise User'
 generate 'devise:views'
 generate 'gritter:locale'
 
+run 'erb2slim app/views -d'
+
+application_layout_file = File.join(File.dirname(__FILE__), 'lib/application.html.slim')
+run "cp #{application_layout_file} app/views/layouts/application.html.slim"
 run 'erb2slim app/views -d'
 
 run 'rails db:migrate'
