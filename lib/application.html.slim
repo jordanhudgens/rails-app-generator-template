@@ -7,6 +7,11 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = nav_helper('div')
-    = yield
-    = alerts
+    .container
+      .row
+        .col-md-10
+          = nav_helper('div')
+        .col-md-2
+          = login_helper
+      = yield
+      = alerts

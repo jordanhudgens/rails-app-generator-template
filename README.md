@@ -6,13 +6,15 @@
 - Devise, with a `users` table and views
 - Use `slim` for templating and convert all files to slim
 - It will install and configure `Bootstrap`
+- It will integrate growl like notifications
+- It integrates font-awesome
+- Sets up a default homepage
+- Integrated Kaminari for pagination, with config and views
 
 TODO: Install and configure:
 
-- gritter
 - petergate
 - font awesome
-- possible kaminari
 - Add new devcamp homepage, maybe something funny
 
 

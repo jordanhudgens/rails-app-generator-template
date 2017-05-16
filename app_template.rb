@@ -20,8 +20,9 @@ run 'rails db:create'
 application_helper_file = File.join(File.dirname(__FILE__), 'lib/application_helper.rb')
 run "cp #{application_helper_file} app/helpers/application_helper.rb"
 run 'mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss'
-run "echo \"@import 'gritter';\" > app/assets/stylesheets/application.scss"
-run "echo \"@import 'bootstrap';\" > app/assets/stylesheets/application.scss"
+run "echo \"@import 'gritter';\" >> app/assets/stylesheets/application.scss"
+run "echo \"@import 'bootstrap';\" >> app/assets/stylesheets/application.scss"
+run "echo \"@import 'font-awesome';\" >> app/assets/stylesheets/application.scss"
 run "echo \"//= require gritter\" >> app/assets/javascripts/application.js"
 run "echo \"//= require bootstrap-sprockets\" >> app/assets/javascripts/application.js"
 
@@ -30,14 +31,26 @@ generate 'devise:install'
 generate 'devise User'
 generate 'devise:views'
 generate 'gritter:locale'
+generate 'kaminari:config'
+generate 'kaminari:views default'
 
 run 'erb2slim app/views -d'
 
 application_layout_file = File.join(File.dirname(__FILE__), 'lib/application.html.slim')
 run "cp #{application_layout_file} app/views/layouts/application.html.slim"
+
+run 'rails g controller Static home'
+
+updated_route_file = File.join(File.dirname(__FILE__), 'lib/routes.rb')
+run "cp #{updated_route_file} config/routes.rb"
+
+logo = File.join(File.dirname(__FILE__), 'lib/images/logo.png')
+run "cp #{logo} app/assets/images/logo.png"
+
 run 'erb2slim app/views -d'
 
 run 'rails db:migrate'
+
 
 git :init
 run 'echo config/secrets.yml >> .gitignore'
