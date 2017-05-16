@@ -3,6 +3,7 @@
 > This application generator will pre-install and configure the following items:
 
 - RSpec, rails-controller-testing, and Capybara for specs and will run Rspec generator
+- Installs and configures FactoryGirl for factories
 - Devise, with a `users` table and views
 - Use `slim` for templating and convert all files to slim
 - It will install and configure `Bootstrap`

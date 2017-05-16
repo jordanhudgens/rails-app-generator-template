@@ -2,6 +2,7 @@ run 'gem install html2slim'
 
 gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
 gem 'capybara', '~> 2.13'
+gem 'factory_girl_rails', '~> 4.8'
 gem 'rails-controller-testing'
 gem 'slim-rails', '~> 3.1', '>= 3.1.2'
 gem 'devise', '~> 4.2'
@@ -53,6 +54,9 @@ run "cp #{updated_route_file} config/routes.rb"
 
 logo = File.join(File.dirname(__FILE__), 'lib/images/logo.png')
 run "cp #{logo} app/assets/images/logo.png"
+
+rails_spec_helper = File.join(File.dirname(__FILE__), 'lib/rails_helper.rb')
+run "cp #{rails_spec_helper} spec/rails_helper.rb"
 
 run 'erb2slim app/views -d'
 
