@@ -13,6 +13,7 @@ TODO: Install and configure:
 - petergate
 - font awesome
 - possible kaminari
+- Add new devcamp homepage, maybe something funny
 
 
 ## Additionally, it will:
@@ -26,5 +27,5 @@ TODO: Install and configure:
 > To run the generator, generate the app with the following command:
 
 ```
-rails new <app-name> -m 
+rails new <app-name> -m https://raw.githubusercontent.com/jordanhudgens/rails-app-generator-template/master/app_template.rb
 ```
