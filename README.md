@@ -23,8 +23,8 @@
 - Eager load modules in the `lib` directory
 
 
-> To run the generator, generate the app with the following command:
+> To run the generator, clone this repo and run the command
 
 ```
-rails new <app-name> -m https://raw.githubusercontent.com/jordanhudgens/rails-app-generator-template/master/app_template.rb
+rails new <app-name> -m <path to the app_template.rb file in this repo>
 ```
