@@ -15,5 +15,6 @@ Bundler.require(*Rails.groups)
 module TestApp
   class Application < Rails::Application
     config.generators { |g| g.scaffold_stylesheet false }
+    config.eager_load_paths << "#{Rails.root}/lib"
   end
 end
