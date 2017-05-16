@@ -19,6 +19,7 @@
 - Convert all `erb` files to `slim`
 - Initialize a new git repository and perform the initial commit
 - Add the `secrets.yml` file to `.gitignore`
+- Eager load modules in the `lib` directory
 
 
 > To run the generator, generate the app with the following command:
