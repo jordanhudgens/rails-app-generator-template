@@ -3,7 +3,6 @@ run 'gem install html2slim'
 
 # Gems for testing and using RSpec
 gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
-gem 'capybara', '~> 2.15', '>= 2.15.4'
 gem 'rails-controller-testing'
 
 # Using slim instead of erb templates
